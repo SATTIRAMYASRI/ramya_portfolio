@@ -58,7 +58,10 @@ class _MyAppState extends State<MyApp> {
                     activeThumbImage: const AssetImage(ImageConstants.sun),
                     inactiveThumbImage: const AssetImage(ImageConstants.night),
                   ),
-                  const SideBar()
+                  BlocProvider(
+                    create: (context) => _themeCubit,
+                    child: const HomeScreen(),
+                  )
                 ],
               ),
             ),

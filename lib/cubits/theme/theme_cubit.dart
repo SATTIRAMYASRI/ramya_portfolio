@@ -5,7 +5,7 @@ part 'theme_state.dart';
 
 class ThemeCubit extends Cubit<ThemeState> {
   ThemeCubit() : super(ThemeInitialState());
-  ThemeData themeColor = lightMode;
+  ThemeData themeColor = darkMode;
 
   changeTheme(selectedMode) {
     themeColor = selectedMode;

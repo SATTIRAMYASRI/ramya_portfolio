@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ramya_portfolio/Theme/themes.dart';
 import 'package:ramya_portfolio/constants/edge_insets.dart';
 import 'package:ramya_portfolio/cubits/side_nav_bar/side_nav_bar_cubit.dart';
 import 'package:ramya_portfolio/cubits/theme/theme_cubit.dart';
@@ -19,7 +18,7 @@ class _SideBarState extends State<SideBar> {
 
   @override
   void initState() {
-    _themeCubit = ThemeCubit();
+    _themeCubit = context.read<ThemeCubit>();
     _sideNavBarCubit = SideNavBarCubit();
     super.initState();
   }
@@ -31,8 +30,8 @@ class _SideBarState extends State<SideBar> {
         BlocProvider<SideNavBarCubit>(
           create: (context) => _sideNavBarCubit,
         ),
-        BlocProvider<ThemeCubit>(
-          create: (context) => _themeCubit,
+        BlocProvider.value(
+          value: _themeCubit,
         ),
       ],
       child: BlocBuilder<SideNavBarCubit, SideNavBarState>(
@@ -102,8 +101,4 @@ class _SideBarState extends State<SideBar> {
       ),
     );
   }
-}
-
-Widget selectedScreen() {
-  return Text("Hello");
 }
